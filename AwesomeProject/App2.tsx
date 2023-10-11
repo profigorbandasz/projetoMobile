@@ -19,14 +19,7 @@ import Bernardo from './Teste';
 import ListaFlat from './ListaFlat';
 import ListaSection from './ListaSection';
 
-const listaSection = [
-  {title: 'A', data:[{key: 1, descricao: 'Ana'}, {key: 2, descricao: 'Zidane'}]},
-  {title: 'B', data:[{key: 2, descricao: 'Bruno'}]},
-  {title: 'C', data:[{key: 3, descricao: 'Carlos'}]},
-  {title: 'D', data:[{key: 4, descricao: 'Douglas'}]},
-  {title: 'E', data:[{key: 5, descricao: 'Elio'}]},
-  {title: 'F', data:[{key: 6, descricao: 'Fábio'}]},
-];
+
 
 const lista = [
   {key: 1, descricao: 'teste'},
@@ -36,7 +29,14 @@ const lista = [
   {key: 4, descricao: 'abobrinha'}
 ];
 
-
+const listaSection = [
+  {title: 'A', data:[{key: 1, descricao: 'Ana'}, {key: 2, descricao: 'Zidane'}]},
+  {title: 'B', data:[{key: 2, descricao: 'Bruno'}]},
+  {title: 'C', data:[{key: 3, descricao: 'Carlos'}]},
+  {title: 'D', data:[{key: 4, descricao: 'Douglas'}]},
+  {title: 'E', data:[{key: 5, descricao: 'Elio'}]},
+  {title: 'F', data:[{key: 6, descricao: 'Fábio'}]},
+];
 
 const App2 = () => {
     return (
