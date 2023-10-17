@@ -12,8 +12,7 @@ type ListaFlatProps = {
 const ListaFlat = (props: ListaFlatProps) => {
     return <FlatList 
         data={props.array} 
-        renderItem={({item}) => (
-            <Text style={styles.item}>{item.descricao}</Text>)}
+        renderItem={({item}) => <Text style={styles.item}>{item.descricao}</Text>}
     />  
 }
 
