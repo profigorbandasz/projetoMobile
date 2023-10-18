@@ -22,15 +22,17 @@ export default ExemploStylesView;
 const styles = StyleSheet.create({
     container_fixo: {
         flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        backgroundColor: '#E0FFFF',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        backgroundColor: 'red',
+        flexDirection: 'row',
         margin: 10,
     },
     container_flex: {
-        flex: 1,
+        flex: 2,
         backgroundColor: '#FFFACD',
         margin: 10,
+        flexDirection: 'row',
     },
     fundo_azul: {
         backgroundColor: 'blue'
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
         height: 50
     },
     flex_pequeno: {
-         flex: 3
+         flex: 1
     },
     flex_grande: {
         flex: 2
