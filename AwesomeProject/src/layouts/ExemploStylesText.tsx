@@ -33,9 +33,9 @@ const styles = StyleSheet.create({
     texto5:{
         color: 'black',
         textShadowColor: 'yellow',
-        textShadowOffset: {width: 1, height: 1},
-        textShadowRadius: 1,
-        
+        textShadowOffset: {width: 5, height: 5},
+        textShadowRadius: 10,
+        fontSize: 100,
     },
     negrito: {
         fontWeight: 'bold',

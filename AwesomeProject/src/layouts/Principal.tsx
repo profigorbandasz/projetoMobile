@@ -1,6 +1,8 @@
 import React, { ReactElement } from 'react';
 import {
   Button,
+  Image,
+  Pressable,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -39,18 +41,27 @@ export default ({ navigation, route }: HomeProps) => {
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Detalhes')} />
-      <Ex1 titulo='teste'/>
-      <Ex2/>
-      <Ex3/>
+      
+      
+      <Pressable
+        style={styles.botao}
+        onPress={() => navigation.navigate('Detalhes')}>
+          <Text style={{fontSize: 50}}>Botão</Text>
+      </Pressable>    
+
+      <ExemploStylesView/>
+      <Image 
+        source={require('../assets/usuario.jpg')} />
     </View>
   );
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red'
+    backgroundColor: 'white'
   },
+  botao:{
+    backgroundColor: 'green',
+  }
 });
