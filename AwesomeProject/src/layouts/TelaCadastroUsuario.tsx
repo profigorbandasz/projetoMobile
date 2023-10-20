@@ -2,36 +2,48 @@ import { useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 import auth from "@react-native-firebase/auth";
+import { CadastroUsuarioProps } from "../types";
 
-export default () => {
+export default ({ navigation, route }: CadastroUsuarioProps) => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
-    function cadastrar(){
+    async function cadastrar() {
         setIsLoading(true);
-        
-        auth()
-            .createUserWithEmailAndPassword(email, senha)
-            .then(() => Alert.alert("Conta", "Cadastrado com sucesso"))
-            .catch((error)=> console.log(error))
-            .finally(()=> setIsLoading(false));
-        
+
+        if (email && senha) {
+
+            auth()
+                .createUserWithEmailAndPassword(email, senha)
+                .then(() => {
+                    Alert.alert("Conta",
+                        "Cadastrado com sucesso")
+                    navigation.navigate('Login');
+                })
+                .catch((error)=> {
+                    console.log(error);
+                    Alert.alert("Erro",
+                    String(error))
+                })
+                .finally(() => { setIsLoading(false) });
+        }else setIsLoading(false);
+
     }
 
     return (
         <View>
             <Text>Email</Text>
-            <TextInput 
+            <TextInput
                 style={styles.caixa_texto}
-                onChangeText={(text) => {setEmail(text)}} />
+                onChangeText={(text) => { setEmail(text) }} />
             <Text>Senha</Text>
-            <TextInput 
+            <TextInput
                 style={styles.caixa_texto}
-                onChangeText={(text) => {setSenha(text)}} />
+                onChangeText={(text) => { setSenha(text) }} />
             <Pressable
                 style={styles.botao}
-                onPress={cadastrar}
+                onPress={() => cadastrar()}
                 disabled={isLoading}>
                 <Text style={styles.desc_botao}>Cadastrar</Text>
             </Pressable>
