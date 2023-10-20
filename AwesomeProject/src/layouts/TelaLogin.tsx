@@ -12,17 +12,22 @@ export default ({ navigation, route }: LoginProps) => {
     function logar() {
         setIsLoading(true);
 
-        auth()
-            .signInWithEmailAndPassword(email, senha)
-            .then(() => {navigation.navigate('Home')})
-            .catch((error) => console.log(error))
-            .finally(() => setIsLoading(false))
+        try {
+            auth()
+                .signInWithEmailAndPassword(email, senha)
+                .then(() => { navigation.navigate('Home') })
+                .catch((error) => console.log(error))
+                .finally(() => setIsLoading(false))
+        } catch (error) {
+            console.log(error);
+            setIsLoading(false);
+        }
     }
 
     function redefinirSenha() {
         auth()
             .sendPasswordResetEmail(email)
-            .then(() => Alert.alert("Redefinir senha", 
+            .then(() => Alert.alert("Redefinir senha",
                 "Enviamos um email para você"))
             .catch((error) => console.log(error))
     }
@@ -34,12 +39,12 @@ export default ({ navigation, route }: LoginProps) => {
                 <TextInput
                     style={styles.caixa_texto}
                     onChangeText={(text) => { setEmail(text) }} />
-                
+
                 <Text>Senha</Text>
                 <TextInput
                     style={styles.caixa_texto}
                     onChangeText={(text) => { setSenha(text) }} />
-                
+
                 <Pressable
                     style={styles.botao}
                     onPress={() => logar()}
@@ -51,7 +56,7 @@ export default ({ navigation, route }: LoginProps) => {
             <View style={styles.container_botoes}>
                 <Pressable
                     style={styles.botao}
-                    onPress={()=> {}}>
+                    onPress={() => { navigation.navigate('CadastroUsuario')}}>
                     <Text style={styles.desc_botao}>Cadastrar-se</Text>
                 </Pressable>
 
