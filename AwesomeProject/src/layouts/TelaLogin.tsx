@@ -10,25 +10,21 @@ export default ({ navigation, route }: LoginProps) => {
     const [isLoading, setIsLoading] = useState(false);
 
     function logar() {
-        setIsLoading(true);
-
-        try {
+        if (email && senha) {
+            setIsLoading(true);
+            
             auth()
                 .signInWithEmailAndPassword(email, senha)
                 .then(() => { navigation.navigate('Home') })
                 .catch((error) => console.log(error))
                 .finally(() => setIsLoading(false))
-        } catch (error) {
-            console.log(error);
-            setIsLoading(false);
         }
     }
 
     function redefinirSenha() {
         auth()
             .sendPasswordResetEmail(email)
-            .then(() => Alert.alert("Redefinir senha",
-                "Enviamos um email para você"))
+            .then(() => Alert.alert("Redefinir senha", "Enviamos um email para você"))
             .catch((error) => console.log(error))
     }
 
@@ -39,12 +35,10 @@ export default ({ navigation, route }: LoginProps) => {
                 <TextInput
                     style={styles.caixa_texto}
                     onChangeText={(text) => { setEmail(text) }} />
-
                 <Text>Senha</Text>
                 <TextInput
                     style={styles.caixa_texto}
                     onChangeText={(text) => { setSenha(text) }} />
-
                 <Pressable
                     style={styles.botao}
                     onPress={() => logar()}
@@ -62,7 +56,7 @@ export default ({ navigation, route }: LoginProps) => {
 
                 <Pressable
                     style={styles.botao}
-                    onPress={redefinirSenha}>
+                    onPress={redefinirSenha }>
                     <Text style={styles.desc_botao}>Esqueci a senha</Text>
                 </Pressable>
             </View>

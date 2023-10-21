@@ -3,20 +3,21 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 type RootStackParamList = {
   Login: undefined;
   Home: undefined;
-  Detalhes: undefined;
   CadastroUsuario: undefined;
+  Detalhes: undefined;
+  CadastroNota: undefined;
+  ListarNotas: undefined;
 };
 
-//HomeScreen
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-//LoginScreen
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
-//CadastroUsuario
 type CadastroUsuarioProps = NativeStackScreenProps<RootStackParamList, 'CadastroUsuario'>;
 
-export type { RootStackParamList, 
-  HomeProps, 
-  LoginProps,
-  CadastroUsuarioProps};
+type CadastroNotaProps = NativeStackScreenProps<RootStackParamList, 'CadastroNota'>;
+
+type ListarNotasProps = NativeStackScreenProps<RootStackParamList, 'ListarNotas'>;
+
+
+export type { RootStackParamList, HomeProps, LoginProps, CadastroUsuarioProps, CadastroNotaProps, ListarNotasProps};

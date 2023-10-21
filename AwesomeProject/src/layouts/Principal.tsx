@@ -1,8 +1,6 @@
 import React, { ReactElement } from 'react';
 import {
   Button,
-  Image,
-  Pressable,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -14,9 +12,6 @@ import {
 import { HomeProps } from '../types';
 import ExemploStylesText from './ExemploStylesText';
 import ExemploStylesView from './ExemploStyleView';
-import Ex1 from './Ex1';
-import Ex2 from './Ex2';
-import Ex3 from './Ex3';
 
 const lista = [
   { key: 1, descricao: 'teste' },
@@ -41,27 +36,23 @@ export default ({ navigation, route }: HomeProps) => {
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Detalhes')} />
-      
-      
-      <Pressable
-        style={styles.botao}
-        onPress={() => navigation.navigate('Detalhes')}>
-          <Text style={{fontSize: 50}}>Botão</Text>
-      </Pressable>    
-
-      <ExemploStylesView/>
-      <Image 
-        source={require('../assets/usuario.jpg')} />
+      <Button
+        title="Cadastrar Nota"
+        onPress={() => navigation.navigate('CadastroNota')} />  
+      <Button
+        title="Listar Notas"
+        onPress={() => navigation.navigate('ListarNotas')} />    
+      <ExemploStylesText />
+      <ExemploStylesView />
     </View>
   );
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: '#F8F8FF'
   },
-  botao:{
-    backgroundColor: 'green',
-  }
 });
