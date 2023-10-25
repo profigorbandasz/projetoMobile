@@ -4,19 +4,17 @@ import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-nativ
 import firestore from "@react-native-firebase/firestore";
 import { INotas } from "../models/INotas";
 import { AlterarNotaProps } from "../types";
+import Carregamento from "./Carregamento";
 
-type Props = {
-    screenProp: AlterarNotaProps;
-    id: string;  
-}
-
-export default (props: Props) => {
-    const [id, setId] = useState(props.id);
+export default ({navigation, route}: AlterarNotaProps) => {
+    const [id,] = useState(route.params.id);
+    const [palavra,] = useState(route.params.palavra);
     const [titulo, setTitulo] = useState('');
     const [descricao, setDescricao] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     async function carregar(){
+        setIsLoading(true);
         const resultado = await firestore()
             .collection('notas')
             .doc(id)
@@ -28,18 +26,17 @@ export default (props: Props) => {
             } as INotas;   
 
         setTitulo(nota.titulo);
-        setDescricao(nota.descricao)
+        setDescricao(nota.descricao);
+        setIsLoading(false);
     };
     
     useEffect(() => {
-        setIsLoading(true);
         carregar();
-        
     }, []);
     
     function alterar() {
         setIsLoading(true);
-
+        
         firestore()
             .collection('notas')
             .doc(id)
@@ -49,8 +46,8 @@ export default (props: Props) => {
                 created_at: firestore.FieldValue.serverTimestamp()
             })
             .then(() => {
-                Alert.alert("Nota", "Cadastrada com sucesso")
-                props.screenProp.navigation.navigate('Home')
+                Alert.alert("Nota", "Alterada com sucesso")
+                navigation.goBack();
             })
             .catch((error) => console.log(error))
             .finally(() => setIsLoading(false));
@@ -58,9 +55,12 @@ export default (props: Props) => {
 
     return (
         <View>
-            <Text>Título</Text>
+            <Carregamento isLoading={isLoading}/>
+
+            <Text>Título {palavra}</Text>
             <TextInput
                 style={styles.caixa_texto}
+                value={titulo}
                 onChangeText={(text) => { setTitulo(text) }} />
             <Text>Descrição</Text>
 
@@ -70,6 +70,7 @@ export default (props: Props) => {
                 numberOfLines={4}
                 maxLength={100}
                 style={styles.caixa_texto}
+                value={descricao}
                 onChangeText={(text) => { setDescricao(text) }} />
 
 
@@ -78,7 +79,7 @@ export default (props: Props) => {
                 style={styles.botao}
                 onPress={() => alterar()}
                 disabled={isLoading}>
-                <Text style={styles.desc_botao}>Cadastrar</Text>
+                <Text style={styles.desc_botao}>Alterar</Text>
             </Pressable>
         </View>
     );

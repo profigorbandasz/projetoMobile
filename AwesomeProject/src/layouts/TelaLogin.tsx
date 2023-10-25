@@ -3,6 +3,7 @@ import { Button, StyleSheet, Text, View, TextInput, Pressable, Alert } from 'rea
 import { HomeProps, LoginProps } from "../types";
 
 import auth from "@react-native-firebase/auth";
+import Carregamento from './Carregamento';
 
 export default ({ navigation, route }: LoginProps) => {
     const [email, setEmail] = useState('');
@@ -30,6 +31,8 @@ export default ({ navigation, route }: LoginProps) => {
 
     return (
         <View style={styles.container}>
+            <Carregamento isLoading={isLoading}/>
+
             <View style={styles.container_login}>
                 <Text>Login</Text>
                 <TextInput

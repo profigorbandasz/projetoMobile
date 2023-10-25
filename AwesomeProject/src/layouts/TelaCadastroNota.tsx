@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 import firestore from "@react-native-firebase/firestore";
-import { CadastroNotaProps, CadastroUsuarioProps } from "../types";
+import { CadastroNotaProps } from "../types";
+import Carregamento from "./Carregamento";
 
 export default ({ navigation, route }: CadastroNotaProps) => {
     const [titulo, setTitulo] = useState('');
@@ -29,6 +30,8 @@ export default ({ navigation, route }: CadastroNotaProps) => {
 
     return (
         <View>
+            <Carregamento isLoading={isLoading}/>
+            
             <Text>Título</Text>
             <TextInput
                 style={styles.caixa_texto}
