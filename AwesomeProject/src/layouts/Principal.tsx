@@ -12,38 +12,22 @@ import {
 import { HomeProps } from '../types';
 import ExemploStylesText from './ExemploStylesText';
 import ExemploStylesView from './ExemploStyleView';
-
-const lista = [
-  { key: 1, descricao: 'teste' },
-  { key: 2, descricao: 'teste2' },
-  { key: 3, descricao: 'teste3' },
-  { key: 4, descricao: 'teste4' }
-];
-
-const listaSection = [
-  { title: 'A', data: [{ key: 1, descricao: 'Ana' }] },
-  { title: 'B', data: [{ key: 2, descricao: 'Bruno' }] },
-  { title: 'C', data: [{ key: 3, descricao: 'Carlos' }] },
-  { title: 'D', data: [{ key: 4, descricao: 'Douglas' }] },
-  { title: 'E', data: [{ key: 5, descricao: 'Elio' }] },
-  { title: 'F', data: [{ key: 6, descricao: 'Fábio' }] },
-];
+import Ex1 from './Ex1';
+import Ex2 from './Ex2';
 
 
 export default ({ navigation, route }: HomeProps) => {
   return (
     <View style={styles.container}>
       <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Detalhes')} />
+        title="Listar Notas"
+        color={'green'}
+        onPress={() => navigation.navigate('ListarNotas')} />
+
       <Button
         title="Cadastrar Nota"
-        onPress={() => navigation.navigate('CadastroNota')} />  
-      <Button
-        title="Listar Notas"
-        onPress={() => navigation.navigate('ListarNotas')} />    
-      <ExemploStylesText />
-      <ExemploStylesView />
+        onPress={() => navigation.navigate('CadastroNota')} />
+     
     </View>
   );
 }

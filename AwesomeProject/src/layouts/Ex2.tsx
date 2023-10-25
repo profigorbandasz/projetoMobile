@@ -1,48 +1,26 @@
+// InitialScreen.tsx
 import React from 'react';
-import {
-    StyleSheet,
-    ScrollView,
-    Image,
-    View
-} from 'react-native';
+import { View, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Ex2 = () => {
-    return <ScrollView>
-        <View style={styles.container}>
-            <Image style={styles.imagem} source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat1.png',
-            }}/>
+const InitialScreen = () => {
+  const navigation = useNavigation();
 
-            <Image style={styles.imagem} source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat1.png',
-            }}/>
+  const navigateToExercise1 = () => {
+    navigation.navigate('Ex1');
+  }
 
-            <Image style={styles.imagem} source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat1.png',
-            }}/>
+  const navigateToExercise3 = () => {
+    navigation.navigate('Ex3');
+  }
 
-            <Image style={styles.imagem} source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat1.png',
-            }}/>
-
-            <Image style={styles.imagem} source={{
-                uri: 'https://reactnative.dev/docs/assets/p_cat1.png',
-            }}/>
-        </View>
-    </ScrollView>
+  return (
+    <View>
+      <Button title="Exercício 1" onPress={navigateToExercise1} />
+      <Button title="Exercício 3" onPress={navigateToExercise3} />
+    </View>
+  );
 }
 
-export default Ex2;
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'green',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    imagem: {
-        width: 200,
-        height: 200
-    }
-});
+export default InitialScreen;
+``
