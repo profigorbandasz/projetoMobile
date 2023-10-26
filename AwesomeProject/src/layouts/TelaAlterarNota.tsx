@@ -64,7 +64,6 @@ export default ({navigation, route}: AlterarNotaProps) => {
                 onChangeText={(text) => { setTitulo(text) }} />
             <Text>Descrição</Text>
 
-
             <TextInput
                 multiline
                 numberOfLines={4}
@@ -72,8 +71,6 @@ export default ({navigation, route}: AlterarNotaProps) => {
                 style={styles.caixa_texto}
                 value={descricao}
                 onChangeText={(text) => { setDescricao(text) }} />
-
-
 
             <Pressable
                 style={styles.botao}
@@ -107,8 +104,4 @@ const styles = StyleSheet.create({
     desc_botao: {
         fontSize: 20
     },
-    text_area: {
-        borderWidth: 1,
-        borderColor: 'grey'
-    }
 });
