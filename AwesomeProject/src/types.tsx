@@ -6,7 +6,7 @@ type RootStackParamList = {
   CadastroUsuario: undefined;
   CadastroNota: undefined;
   ListarNotas: undefined;
-  AlterarNota: undefined;
+  AlterarNota: {id: string; palavra: string};
 };
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;

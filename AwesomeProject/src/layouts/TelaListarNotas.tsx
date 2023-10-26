@@ -50,6 +50,10 @@ export default ({ navigation, route }: ListarNotasProps) => {
             .finally(() => setIsLoading(false));
     }
 
+    function alterarNota(id: string){
+        navigation.navigate("AlterarNota", {id: id, palavra: 'abobrinha'})
+    }
+
     return (
         <View>
             <Text style={{ fontSize: 30 }}>Listagem de Notas</Text>
@@ -63,10 +67,21 @@ export default ({ navigation, route }: ListarNotasProps) => {
                                 <Text style={{ fontSize: 35 }}>{info.item.titulo}</Text>
                                 <Text>{info.item.descricao}</Text>
                             </View>
+                            
+                            <View style={styles.botao_alterar}>
+                                <Pressable
+                                    onPress={() => alterarNota(info.item.id)}>
+                                        <Text style={{fontWeight:"bold", fontSize: 40}}>
+                                            A
+                                        </Text>
+                                </Pressable>
+                            </View>
+                            
                             <View style={styles.botao_deletar}>
+                                
                                 <Pressable
                                     onPress={() => deletarNota(info.item.id)}>
-                                        <Text style={{fontWeight:"bold", fontSize: 50}}>
+                                        <Text style={{fontWeight:"bold", fontSize: 40}}>
                                             X
                                         </Text>
                                 </Pressable>
@@ -95,7 +110,13 @@ const styles = StyleSheet.create({
     },
     botao_deletar:{
         backgroundColor: 'red', 
-        width: 50,
+        width: 40,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    botao_alterar:{
+        backgroundColor: 'yellow', 
+        width: 40,
         justifyContent: 'center',
         alignItems: 'center',
     }

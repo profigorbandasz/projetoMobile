@@ -3,6 +3,7 @@ import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-nativ
 
 import auth from "@react-native-firebase/auth";
 import { CadastroUsuarioProps } from "../types";
+import Carregamento from "./Carregamento";
 
 export default ({ navigation, route }: CadastroUsuarioProps) => {
     const [email, setEmail] = useState('');
@@ -33,6 +34,8 @@ export default ({ navigation, route }: CadastroUsuarioProps) => {
 
     return (
         <View>
+            <Carregamento isLoading={isLoading}/>
+
             <Text>Email</Text>
             <TextInput
                 style={styles.caixa_texto}
