@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import { HomeProps } from '../types';
+import Pai from './ExemploCallback';
 
 
 export default ({ navigation, route }: HomeProps) => {
@@ -24,6 +25,7 @@ export default ({ navigation, route }: HomeProps) => {
         title="Cadastrar Nota"
         onPress={() => navigation.navigate('CadastroNota')} />
      
+      <Pai/>
     </View>
   );
 }
